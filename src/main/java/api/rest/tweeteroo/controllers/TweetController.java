@@ -26,6 +26,8 @@ public class TweetController {
     
     @Autowired
     private TweetService tweetService;
+
+    @Autowired
     private AccountService accountService;
 
     @PostMapping
