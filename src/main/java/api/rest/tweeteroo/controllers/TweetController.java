@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import api.rest.tweeteroo.dtos.NewTweetDTO;
+import api.rest.tweeteroo.dtos.TweetDTO;
 import api.rest.tweeteroo.models.Account;
 import api.rest.tweeteroo.models.Tweet;
 import api.rest.tweeteroo.services.AccountService;
@@ -26,8 +28,12 @@ public class TweetController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public void createNewTweet(@RequestBody String req) {
-        Account user = accountService.getLoggedUser(req);
+    public void createNewTweet(@RequestBody NewTweetDTO req) {
+        Account user = accountService.getLoggedUser(req.username());
+
+        TweetDTO newTweet = new TweetDTO(user.getUsername(), req.tweet(), user.getAvatar());
+
+        tweetService.create(new Tweet(newTweet));
     }
 
     @GetMapping
