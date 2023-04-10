@@ -1,7 +1,5 @@
 package api.rest.tweeteroo.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +18,7 @@ public class AccountService {
         repository.save(new Account(dto));
     }
 
-    public Optional<Account> getLoggedUser(Long id) {
-        return repository.findById(id);
+    public Account getLoggedUser(String name) {
+        return repository.findByusername(name);
     }
 }

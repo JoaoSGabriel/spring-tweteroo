@@ -6,4 +6,5 @@ import api.rest.tweeteroo.models.Account;
 
 public interface AccountRepository extends JpaRepository<Account, Long>{
     
+    public Account findByusername(String name);
 }
