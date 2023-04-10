@@ -1,6 +1,7 @@
 package api.rest.tweeteroo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,9 @@ public class TweetService {
 
     public List<Tweet> getAll() {
         return tweetRepository.findAll();
+    }
+
+    public Optional<Tweet> getAllByUsername(String username) {
+        return tweetRepository.findAllByusername(username);
     }
 }
