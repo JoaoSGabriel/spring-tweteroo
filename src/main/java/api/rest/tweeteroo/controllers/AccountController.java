@@ -13,7 +13,7 @@ import api.rest.tweeteroo.models.Account;
 import api.rest.tweeteroo.services.AccountService;
 
 @RestController
-@RequestMapping("/api/signup")
+@RequestMapping("/api/auth/sign-up")
 public class AccountController {
     
     @Autowired
